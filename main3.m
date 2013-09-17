@@ -23,12 +23,13 @@ for i = 1 : length(file)
 end
 Img = 1:i;
 j = 1;
-for i = 1:length(START)
+for i = 14:14
     STARt=START(i);
     Img(find(Img==STARt)) = [];
     IMG{i} = img(:,:,STARt);
     while 1
         IMG{i} = [IMG{i} img(:,:,find(S(STARt,:)==min(S(STARt,:)))) ];
+        figure;imshow(IMG{i});
         STARt = find(S(STARt,:)==min(S(STARt,:)));
         Img(find(Img==STARt)) = [];
         if ~sum(find(S(STARt,:)==min(S(STARt,:)))~=START)

@@ -1,5 +1,5 @@
 clc;clear;
-path = '1';
+path = '2';
 file = dir([path '/*.bmp']);
 img = [];
 for i = 1 : length(file)
