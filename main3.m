@@ -38,8 +38,6 @@ for i=1:length(file)
     Class{i}=class;
 end
 
-
-%{
 for i = 1:length(START)
     STARt=START(i);
     Img(find(Img==STARt)) = [];
@@ -51,8 +49,30 @@ for i = 1:length(START)
         if ~sum(find(S(STARt,:)==min(S(STARt,:)))~=START)
             break
         end
+        NEXT = find(S(STARt,:)==min(S(STARt,:)));
+        if isempty(find(Class{STARt}==NEXT))
+            break;
+        end
     end
         figure;imshow(IMG{i});
 end
 %imshow(IMG)
-%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
