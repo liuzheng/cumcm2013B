@@ -37,13 +37,15 @@ for i=1:length(file)
     end
     Class{i}=class;
 end
-
+class=[];
 for i = 1:length(START)
     STARt=START(i);
     Img(find(Img==STARt)) = [];
     IMG{i} = img(:,:,STARt);
+    class{i} = STARt;
     while 1
         IMG{i} = [IMG{i} img(:,:,find(S(STARt,:)==min(S(STARt,:)))) ];
+        class{i} = [class{i} find(S(STARt,:)==min(S(STARt,:)))];
         STARt = find(S(STARt,:)==min(S(STARt,:)));
         Img(find(Img==STARt)) = [];
         if ~sum(find(S(STARt,:)==min(S(STARt,:)))~=START)
@@ -56,9 +58,19 @@ for i = 1:length(START)
     end
         figure;imshow(IMG{i});
 end
-%imshow(IMG)
+FileNum = 1:length(file);
+FileNum(START) =[];
 
+for i = 1:length(FileNum)
+ %    InnerImg = img(FileNum(i))
+ %imshow(IMG)
+ find(S(:,i)==min(S(Class{FileNum(i)},i))) 
+  Class{FileNum(i)};
+    if img(:,end,i)==255
+        START = i;
+    end
 
+end
 
 
 
